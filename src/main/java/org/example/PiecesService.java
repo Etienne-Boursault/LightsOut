@@ -2,7 +2,9 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class PiecesService {
+public class PiecesService extends ElementService {
+
+    final BoardService boardService = new BoardService();
 
     /**
      * Create all the pieces from the third line of the file
@@ -12,24 +14,18 @@ public class PiecesService {
      */
     public ArrayList<int[][]> createPieces(String s) {
 
-        // System.out.println("All the pieces in a form of a line : " + s);
         // Create a list with all the pieces
         String[] pieces = s.split(" ");
-        // System.out.println("All the pieces in a form of an Array : " + Arrays.deepToString(pieces));
 
         ArrayList<int[][]> arrayOfEachPieces = new ArrayList<>();
 
         for (int i = 0; i < pieces.length; i++) {
-            //System.out.println("Piece number " + ((int) i+1) + ": " + pieces[i]);
             char[] charArray = pieces[i].toCharArray();
-            // System.out.println("La taille de la pièce numéro " + ((int) i+1) + " est de " + charArray.length);
-            //System.out.println("La pièce numéro " + (i+1) + ": " + charArray);
 
             // Get the size of the piece
             int numberOfColumns = countColumnOfPiece(pieces[i]);
             int numberOfLines = countLinesOfPiece(pieces[i]);
 
-            // System.out.println("Number of lines: " + numberOfLines + "\nNumber of columns: " + numberOfColumns);
             int[][] piecesToAdd = new int[numberOfLines][numberOfColumns];
 
             int lineNumber = 0;
@@ -40,14 +36,10 @@ public class PiecesService {
                     columnNumber = 0;
                     continue;
                 }
-                //System.out.println("Character: " + charArray[k]);
                 piecesToAdd[lineNumber][columnNumber] = convertDotAndX(String.valueOf(charArray[k]));
-                //System.out.println("Pieces n°" + (i+1) + "[" + lineNumber + "][" + columnNumber + "]: " + piecesToAdd[lineNumber][columnNumber]);
                 columnNumber++;
             }
             arrayOfEachPieces.add(piecesToAdd);
-
-            // System.out.println("Piece n°" + (i+1) + ": " + Arrays.deepToString(arrayOfEachPieces.get(i)));
         }
 
         return arrayOfEachPieces;
@@ -66,7 +58,6 @@ public class PiecesService {
                 linesCount++;
             }
         }
-        // System.out.println("There are " + (linesCount+1) + " lines in this piece");
         return linesCount+1;
     }
 
@@ -77,7 +68,6 @@ public class PiecesService {
      * @return the number of columns of the piece
      */
     private int countColumnOfPiece(String s) {
-        // System.out.println("There are " + s.indexOf(',') + " columns in this piece");
         return s.indexOf(',') == -1 ? s.length() : s.indexOf(',') ;
     }
 
@@ -102,5 +92,26 @@ public class PiecesService {
         } else {
             return 1;
         }
+    }
+
+    /**
+     *
+     * @param board
+     * @param piece
+     * @param positions
+     * @param depth
+     * @return
+     */
+    public int[][] addPieceToBoard(int[][] board, int[][] piece, int[] positions, int depth) {
+        int[][] newBoard = boardService.copyElement(board);
+        for (int i = 0; i < piece.length; i++) {
+            for (int j = 0; j < piece[0].length; j++) {
+                newBoard[i+(positions[0]-1)][j+(positions[1]-1)] += piece[i][j];
+                if (newBoard[i+positions[0]-1][j+positions[1]-1] == depth) {
+                    newBoard[i+positions[0]-1][j+positions[1]-1] = 0;
+                }
+            }
+        }
+        return newBoard;
     }
 }

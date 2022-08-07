@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39d84f94-c0b4-40e0-b65c-5a00d52df4af" name="Changes" comment="Board and Pieces Managment" />
+    <list default="true" id="b68e2861-1fb7-4823-b82d-af31441d0379" name="Changes" comment="Board and Pieces Managment">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ElementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SolvingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PiecesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PiecesService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
