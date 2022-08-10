@@ -104,11 +104,36 @@ public class PiecesService extends ElementService {
      */
     public int[][] addPieceToBoard(int[][] board, int[][] piece, int[] positions, int depth) {
         int[][] newBoard = boardService.copyElement(board);
+
         for (int i = 0; i < piece.length; i++) {
             for (int j = 0; j < piece[0].length; j++) {
-                newBoard[i+(positions[0]-1)][j+(positions[1]-1)] += piece[i][j];
-                if (newBoard[i+positions[0]-1][j+positions[1]-1] == depth) {
-                    newBoard[i+positions[0]-1][j+positions[1]-1] = 0;
+                //System.out.println("i + (positions[0]) - " + (i + (positions[0])) + " - j + (positions[1]: " + (j + (positions[1])));
+                //System.out.println("positions[0]): " + positions[0] + " - positions[1]: " + positions[1]);
+                newBoard[i + (positions[0])][j + (positions[1])] += piece[i][j];
+                if (newBoard[i + positions[0]][j + positions[1]] == depth) {
+                    newBoard[i + positions[0]][j + positions[1]] = 0;
+                }
+            }
+        }
+        return newBoard;
+    }
+
+
+    /**
+     *
+     * @param board
+     * @param piece
+     * @param positions
+     * @param depth
+     * @return
+     */
+    public int[][] removePieceFromBoard(int[][] board, int[][] piece, int[] positions, int depth) {
+        int[][] newBoard = boardService.copyElement(board);
+        for (int i = 0; i < piece.length; i++) {
+            for (int j = 0; j < piece[0].length; j++) {
+                newBoard[i+(positions[0])][j+(positions[1])] -= piece[i][j];
+                if (newBoard[i+positions[0]][j+positions[1]] == -1) {
+                    newBoard[i+positions[0]][j+positions[1]] = depth-1;
                 }
             }
         }

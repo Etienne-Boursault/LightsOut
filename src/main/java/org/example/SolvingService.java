@@ -24,7 +24,7 @@ public class SolvingService {
         ArrayList<int[][]> orderedBestPositions = new ArrayList<>();
         for (int i = 0; i < position[0]; i++){
             for (int j = 0; j < position[1]; j++) {
-                newBoard = piecesService.addPieceToBoard(board, piece, new int[]{(i+1), (j+1)}, 2);
+                newBoard = piecesService.addPieceToBoard(board, piece, new int[]{(i), (j)}, 2);
                 valueOfTheNewBoard = this.valueOfTheElement(newBoard);
 
                 // If there is already a piece in the array, look where to put the new array
@@ -64,5 +64,4 @@ public class SolvingService {
 
         return valueOfTheBoard;
     }
-
 }

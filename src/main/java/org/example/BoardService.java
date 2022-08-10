@@ -32,8 +32,6 @@ public class BoardService extends ElementService {
         int[] positions = new int[2];
         positions[0] = boardLineSize/piece.length + boardLineSize%piece.length;
         positions[1] = boardColumnSize/piece[0].length + boardColumnSize%piece[0].length;
-        // System.out.println("Position on the line: " + boardLineSize/piece.length + " - Modulo: " + boardLineSize%piece.length);
-        // System.out.println("Position on the column: " + boardColumnSize/piece[0].length + " - Modulo: " + boardColumnSize%piece[0].length);
         return positions;
     }
 }
